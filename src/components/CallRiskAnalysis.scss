@@ -1,0 +1,98 @@
+.call-risk-analysis {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 30px;
+    background: linear-gradient(135deg, #2b2d42, #3c416f);
+    color: #f0f0f0;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  
+    h1 {
+      font-size: 28px;
+      color: #f7b32b;
+      margin-bottom: 25px;
+      text-align: center;
+      font-weight: 700;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    }
+  
+    h2 {
+      color: #f7b32b;
+      font-size: 22px;
+      margin: 25px 0;
+      font-weight: 600;
+    }
+  
+    .date-section {
+      margin-bottom: 35px;
+    }
+  
+    .call-card {
+      background: #1f2235;
+      border: 1px solid #3c3f58;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 25px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s, box-shadow 0.3s;
+  
+      &:hover {
+        box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+        transform: translateY(-5px);
+      }
+  
+      h4 {
+        color: #f7b32b;
+        font-size: 20px;
+        margin-bottom: 12px;
+        font-weight: 600;
+      }
+  
+      p {
+        margin: 10px 0;
+        font-size: 15px;
+        color: #d4d4dc;
+  
+        strong {
+          color: #f0f0f0;
+          font-weight: 500;
+        }
+      }
+  
+      .risk-metrics {
+        margin-top: 18px;
+        padding: 15px;
+        background: #2f3150;
+        border-left: 4px solid #f7b32b;
+        border-radius: 8px;
+        box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+  
+        p {
+          margin: 8px 0;
+          font-size: 14px;
+        }
+      }
+  
+      .actions {
+        margin-top: 25px;
+  
+        h5 {
+          color: #f7b32b;
+          font-size: 18px;
+          margin-bottom: 12px;
+          font-weight: 600;
+        }
+  
+        ul {
+          padding-left: 22px;
+  
+          li {
+            margin-bottom: 8px;
+            font-size: 15px;
+            color: #d4d4dc;
+            list-style-type: disc;
+          }
+        }
+      }
+    }
+  }
+  

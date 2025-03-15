@@ -5,9 +5,12 @@ import PieChartBox from "../../components/pieCartBox/PieChartBox";
 import TopBox from "../../components/topBox/TopBox";
 import {
   barChartBoxRevenue,
+  barChartBoxRev,
   barChartBoxVisit,
   chartBoxConversion,
+  chartBoxConv,
   chartBoxProduct,
+  chartBoxProduc,
   chartBoxRevenue,
   chartBoxUser,
 } from "../../data";
@@ -42,6 +45,15 @@ const Home = () => {
       </div>
       <div className="box box9">
         <BarChartBox {...barChartBoxRevenue} />
+      </div>
+      <div className="box box9">
+        <BarChartBox {...barChartBoxRev} />
+      </div>
+      <div className="box box11">
+        <ChartBox {...chartBoxConv} />
+      </div>
+      <div className="box box3">
+        <ChartBox {...chartBoxProduc} />
       </div>
     </div>
   );

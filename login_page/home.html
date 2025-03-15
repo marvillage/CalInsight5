@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Admin Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="admin-styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Admin Dashboard</h1>
+            <div class="user-info">
+                <div class="alerts-icon">
+                    <i class="fas fa-bell"></i>
+                    <span class="alert-badge">3</span>
+                </div>
+                <span>Welcome, Admin</span>
+                <a href="login.html" class="logout-btn">Logout</a>
+            </div>
+        </header>
+        
+        <nav>
+            <ul>
+                <li><a href="home.html" class="active"><i class="fas fa-home"></i> Home</a></li>
+                <li><a href="employees.html"><i class="fas fa-users"></i> Employees</a></li>
+                
+            </ul>
+        </nav>
+        
+        <main>
+            <section class="critical-alerts">
+                <h2><i class="fas fa-exclamation-triangle"></i> Critical Alerts</h2>
+                <div class="alert-container">
+                    <div class="alert-card high-priority">
+                        <i class="fas fa-shield-alt"></i>
+                        <div class="alert-content">
+                            <h3>Security Alert</h3>
+                            <p>Unusual login activity detected from multiple IP addresses</p>
+                            <span class="timestamp">10 minutes ago</span>
+                        </div>
+                    </div>
+                    <div class="alert-card medium-priority">
+                        <i class="fas fa-phone-slash"></i>
+                        <div class="alert-content">
+                            <h3>Call Center Alert</h3>
+                            <p>Spike in missed calls (15% increase in last hour)</p>
+                            <span class="timestamp">30 minutes ago</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="quick-stats">
+                <div class="stat-card">
+                    <h3>Total Employees</h3>
+                    <p>250</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Employees</h3>
+                    <p>180</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Recent Calls</h3>
+                    <p>47</p>
+                    <span class="trend-indicator up">↑ 12%</span>
+                </div>
+                <div class="stat-card">
+                    <h3>Pending Actions</h3>
+                    <p>5</p>
+                    <span class="trend-indicator down">↓ 3%</span>
+                </div>
+            </section>
+            
+            <!-- Resource Allocation Section -->
+            <section class="resource-allocation">
+                <h2>Resource Allocation</h2>
+                <div class="department-stats">
+                    <div class="dept-card">
+                        <h3>Sales Department</h3>
+                        <div class="utilization-bar">
+                            <div class="bar-fill" style="width: 85%;">85%</div>
+                        </div>
+                        <p>High workload - Consider adding resources</p>
+                    </div>
+                    <div class="dept-card">
+                        <h3>Marketing Department</h3>
+                        <div class="utilization-bar">
+                            <div class="bar-fill" style="width: 60%;">60%</div>
+                        </div>
+                        <p>Optimal resource utilization</p>
+                    </div>
+                    <div class="dept-card">
+                        <h3>IT Department</h3>
+                        <div class="utilization-bar">
+                            <div class="bar-fill low" style="width: 40%;">40%</div>
+                        </div>
+                        <p>Underutilized - Review allocation</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="employee-list">
+                <h2>Employee List</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Department</th>
+                            <th>Status</th>
+                            <th>Alerts</th>
+                           
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Kaustuv Choudhary</td>
+                            <td>Sales</td>
+                            <td><span class="status active">Active</span></td>
+                            <td>
+                                <span class="alert-tag high">High Call Duration</span>
+                            </td>
+                            
+                        </tr>
+                        <tr class="flagged">
+                            <td>Kushagra Srivastava</td>
+                            <td>Marketing</td>
+                            <td><span class="status on-call">On Call</span></td>
+                            <td>
+                                <span class="alert-tag critical">Multiple Complaints</span>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td>Sashwat Nayak</td>
+                            <td>IT</td>
+                            <td><span class="status offline">Offline</span></td>
+                            <td>
+                                <span class="alert-tag warning">Missed Calls</span>
+                            </td>
+                           
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+          
+            <section class="activity-trends">
+                <h2>Employee Activity Trends</h2>
+                <div class="trend-cards">
+                    <div class="trend-card">
+                        <h3>Peak Hours</h3>
+                        <div class="trend-chart">
+                            <div class="chart-bar" style="height: 60%;" data-time="9AM"></div>
+                            <div class="chart-bar" style="height: 80%;" data-time="10AM"></div>
+                            <div class="chart-bar" style="height: 95%;" data-time="11AM"></div>
+                            <div class="chart-bar" style="height: 75%;" data-time="12PM"></div>
+                            <div class="chart-bar" style="height: 65%;" data-time="1PM"></div>
+                        </div>
+                        <p>Busiest time: 11AM - 12PM</p>
+                    </div>
+                    <div class="trend-card">
+                        <h3>Average Call Duration</h3>
+                        <div class="metric-display">
+                            <span class="large-metric">12:45</span>
+                            <span class="trend-indicator up">↑ 2:15 from last week</span>
+                        </div>
+                    </div>
+                    <div class="trend-card">
+                        <h3>Employee Availability</h3>
+                        <div class="availability-chart">
+                            <div class="chart-segment available" style="width: 65%;">65% Available</div>
+                            <div class="chart-segment on-call" style="width: 25%;">25% On Call</div>
+                            <div class="chart-segment offline" style="width: 10%;">10% Offline</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <!-- <script>
+        function loadEmployeeDetails(employeeName) {
+            var container = document.getElementById('employee-details-container');
+            
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', employeeName + '.html', true);
+            
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    container.innerHTML = xhr.responseText;
+                } else {
+                    container.innerHTML = '<p>Error loading employee details.</p>';
+                }
+            };
+            
+            xhr.send();
+        }
+    </script> -->
+</body>
+</html>

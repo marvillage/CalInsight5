@@ -1,0 +1,120 @@
+.callback-report {
+  padding: 30px;
+  background-color: #1a1a2e;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #e4e4e4;
+  min-height: 100vh;
+}
+
+.callback-report h1 {
+  text-align: center;
+  color: #9d4edd;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 4px rgba(157, 78, 221, 0.2);
+}
+
+.callback-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.callback-card {
+  background-color: #252542;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2),
+              0 1px 3px rgba(157, 78, 221, 0.1);
+  padding: 25px;
+  text-align: left;
+  border: 1px solid #363655;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.callback-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #9d4edd, #c77dff);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.callback-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3),
+              0 2px 4px rgba(157, 78, 221, 0.2);
+}
+
+.callback-card:hover::before {
+  opacity: 1;
+}
+
+.callback-card h3 {
+  color: #9d4edd;
+  margin-bottom: 15px;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.callback-card p {
+  margin: 8px 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #b8b8d1;
+}
+
+.callback-card strong {
+  color: #e4e4e4;
+  font-weight: 600;
+}
+
+/* Custom scrollbar */
+.callback-report::-webkit-scrollbar {
+  width: 8px;
+}
+
+.callback-report::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+.callback-report::-webkit-scrollbar-thumb {
+  background: #363655;
+  border-radius: 4px;
+}
+
+.callback-report::-webkit-scrollbar-thumb:hover {
+  background: #9d4edd;
+}
+
+/* Add responsive adjustments */
+@media (max-width: 768px) {
+  .callback-report {
+    padding: 20px;
+  }
+  
+  .callback-report h1 {
+    font-size: 2rem;
+  }
+  
+  .callback-cards {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 15px;
+  }
+  
+  .callback-card {
+    padding: 20px;
+  }
+}

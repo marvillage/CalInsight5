@@ -1,0 +1,98 @@
+.topBox {
+  padding: 20px;
+  background-color: #1e1e2f; /* Dark background */
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  max-width: 800px; /* Set a maximum width for the container */
+  margin: 0 auto; /* Center the container */
+  
+  h1 {
+    margin-bottom: 20px;
+    color: #f1f1f1; /* Lighter text for better contrast */
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  .loading {
+    text-align: center;
+    padding: 20px;
+    color: #a0a0a0; /* Muted color for loading text */
+    font-size: 16px;
+  }
+
+  .tableContainer {
+    overflow-x: auto;
+    margin-top: 20px;
+    border-radius: 8px;
+    background-color: #2a2a3c; /* Darker table container background */
+  }
+
+  .callTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 800px;
+
+    th,
+    td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #444; /* Subtle border for rows */
+      color: #e0e0e0; /* Lighter text color */
+    }
+
+    th {
+      background-color: #3a3a4f; /* Darker header background */
+      font-weight: 600;
+      color: #cccccc; /* Lighter header text */
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+
+      &:hover {
+        background-color: #505067; /* Change on hover for better interaction */
+        color: #ffffff; /* Brighter text on hover */
+      }
+
+      span {
+        font-size: 0.8em;
+        margin-left: 5px;
+      }
+    }
+
+    tbody tr {
+      transition: background-color 0.2s;
+
+      &:hover {
+        background-color: #353548; /* Row hover effect */
+      }
+
+      td {
+        &:first-child {
+          font-weight: 500; /* Slightly bold for the first column */
+        }
+      }
+    }
+
+    .callType {
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 0.9em;
+      font-weight: 500;
+      text-transform: capitalize; /* Capitalize call type text */
+
+      &.incoming {
+        background-color: #388e3c33; /* Slight transparency for incoming call type */
+        color: #66bb6a; /* Bright green for incoming */
+      }
+
+      &.outgoing {
+        background-color: #1976d233; /* Slight transparency for outgoing call type */
+        color: #42a5f5; /* Light blue for outgoing */
+      }
+
+      &.missed {
+        background-color: #d32f2f33; /* Slight transparency for missed call type */
+        color: #ef5350; /* Red for missed */
+      }
+    }
+  }
+}

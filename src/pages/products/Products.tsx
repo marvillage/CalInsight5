@@ -16,41 +16,73 @@ const columns: GridColDef[] = [
     },
   },
   {
-    field: "title",
+    field: "name",
     type: "string",
-    headerName: "Title",
+    headerName: "Athlete Name",
     width: 250,
   },
   {
-    field: "color",
+    field: "messagePreview",
     type: "string",
-    headerName: "Color",
+    headerName: "Message Preview",
+    width: 300,
+  },
+  {
+    field: "status",
+    type: "string",
+    headerName: "Status",
     width: 150,
+    // Possible values: "Unread", "Read", "Replied"
   },
   {
-    field: "price",
-    type: "string",
-    headerName: "Price",
-    width: 200,
-  },
-  {
-    field: "producer",
-    headerName: "Producer",
-    type: "string",
-    width: 200,
-  },
-  {
-    field: "createdAt",
-    headerName: "Created At",
+    field: "lastMessageTime",
+    headerName: "Last Message Time",
     width: 200,
     type: "string",
   },
   {
-    field: "inStock",
-    headerName: "In Stock",
+    field: "isConfidential",
+    headerName: "Confidential",
     width: 150,
     type: "boolean",
+    // Shows whether the chat is marked as confidential
   },
+  {
+    field: "reportStatus",
+    headerName: "Reported",
+    width: 150,
+    type: "boolean",
+    // Whether the conversation has been flagged/reported
+  },
+  {
+    field: "chatType",
+    headerName: "Chat Type",
+    width: 150,
+    type: "string",
+    // Example values: "One-on-One", "Group"
+  },
+  {
+    field: "athleteRole",
+    headerName: "Athlete Role",
+    width: 200,
+    type: "string",
+    // Example values: "Olympian", "Professional", "Amateur"
+  },
+  {
+    field: "securityLevel",
+    headerName: "Security Level",
+    width: 150,
+    type: "string",
+    // Example values: "High", "Medium", "Low"
+  },
+  {
+    field: "isActive",
+    headerName: "Active",
+    width: 150,
+    type: "boolean",
+    // Indicates if the chat is currently active
+  },
+  
 ];
 
 const Products = () => {
@@ -69,8 +101,8 @@ const Products = () => {
   return (
     <div className="products">
       <div className="info">
-        <h1>Products</h1>
-        <button onClick={() => setOpen(true)}>Add New Products</button>
+        <h1>Chats</h1>
+        <button onClick={() => setOpen(true)}>Add New Chat</button>
       </div>
       <DataTable slug="products" columns={columns} rows={products} />
       {/* TEST THE API */}

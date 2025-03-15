@@ -1,0 +1,81 @@
+// Color Variables
+$background-color: #1e1e2f; // Dark background for contrast
+$text-color: #f1f1f1; // White text for better contrast
+$heading-color: #4fa3ff; // Cool blue for headings
+$card-background-color: #2a2a3c; // Dark modern blue for employee report
+$call-item-background: #3a3a50; // Darker blue for call items
+$border-color: #4fa3ff; // Border color matches heading
+$box-shadow-color: rgba(0, 0, 0, 0.2); // Deeper shadow
+$transition-speed: 0.3s; // Transition speed for hover effects
+
+.compliance-report {
+  background-color: $background-color; // Dark background
+  color: $text-color; // White text for contrast
+  padding: 30px; // Spacious layout
+  font-family: 'Arial', sans-serif;
+  max-width: 800px; // Maximum width for the component
+  margin: 0 auto; // Center the report
+
+  h1 {
+    color: $heading-color; // Cool blue for headings
+    text-align: center;
+    font-size: 2rem; // Large main heading
+    margin-bottom: 20px; // Space below heading
+    text-transform: uppercase; // Professional look
+  }
+
+  .employee-report {
+    margin: 20px auto;
+    padding: 20px; // Spacious padding for the employee report
+    border-radius: 10px; // Rounded corners
+    border: 1px solid $border-color; // Border for definition
+    background-color: $card-background-color; // Dark blue background
+    box-shadow: 0 4px 15px $box-shadow-color; // Soft shadow for depth
+    transition: transform $transition-speed ease; // Smooth scaling effect
+
+    h2 {
+      font-size: 1.75rem; // Subheading size
+      margin-bottom: 15px; // Space below subheading
+      color: $heading-color; // Consistent cool blue for subheading
+    }
+
+    .call-list {
+      list-style-type: none; // No list-style
+      padding: 0; // No padding for the list
+
+      .call-item {
+        background-color: $call-item-background; // Darker blue for calls
+        margin: 15px 0; // Space between items
+        padding: 15px; // Padding for readability
+        border-radius: 8px; // Softer corners
+        box-shadow: 0 2px 5px $box-shadow-color; // Soft shadow
+
+        h3 {
+          color: $heading-color; // Cool blue for call titles
+          font-size: 1.3rem; // Slightly larger for readability
+          margin-bottom: 8px; // Space below call title
+        }
+
+        p {
+          color: $text-color; // White text for contrast
+          margin: 5px 0; // Consistent spacing
+          line-height: 1.6; // Better line spacing for readability
+        }
+
+        // Add hover effect
+        &:hover {
+          transform: translateY(-2px); // Slight lift on hover
+          transition: transform $transition-speed ease; // Smooth hover effect
+          background-color: lighten($call-item-background, 5%); // Lighten background on hover
+        }
+      }
+    }
+  }
+
+  // Loading state styling
+  p.loading {
+    text-align: center; // Center the loading text
+    font-size: 1.2rem; // Larger font for loading state
+    color: $text-color; // White color for loading text
+  }
+}

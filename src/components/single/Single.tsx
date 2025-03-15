@@ -8,6 +8,7 @@ import {
   YAxis,
 } from "recharts";
 import "./single.scss";
+import { colors } from "@mui/material";
 
 type Props = {
   id: number;
@@ -29,7 +30,7 @@ const Single = (props: Props) => {
           <div className="topInfo">
             {props.img && <img src={props.img} alt="" />}
             <h1>{props.title}</h1>
-            <button>Update</button>
+            <button style={{ color: 'blue' }}>Modify</button>
           </div>
           <div className="details">
             {Object.entries(props.info).map((item) => (

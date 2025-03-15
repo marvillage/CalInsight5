@@ -1,0 +1,163 @@
+.missedCalls {
+  padding: 30px;
+  background-color: #1a1a2e;
+  border-radius: 16px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2),
+              0 2px 4px rgba(157, 78, 221, 0.1);
+  max-width: 800px;
+  margin: 30px auto;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: #e4e4e4;
+}
+
+.missedCalls h2 {
+  color: #9d4edd;
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 30px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 4px rgba(157, 78, 221, 0.2);
+}
+
+.device {
+  background-color: #252542;
+  border: 1px solid #363655;
+  border-radius: 12px;
+  padding: 25px;
+  margin-bottom: 25px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.device:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2),
+              0 2px 4px rgba(157, 78, 221, 0.1);
+}
+
+.device::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, #9d4edd, #c77dff);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.device:hover::before {
+  opacity: 1;
+}
+
+.device h3 {
+  color: #c77dff;
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.date {
+  margin-bottom: 20px;
+  color: #b8b8d1;
+  font-size: 0.95rem;
+}
+
+.device h4 {
+  font-size: 1.1rem;
+  color: #e4e4e4;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.callInfo {
+  padding: 15px;
+  background-color: #1e1e36;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  font-size: 0.95rem;
+  border: 1px solid #363655;
+  transition: background-color 0.2s ease;
+}
+
+.callInfo:hover {
+  background-color: #2a2a4a;
+}
+
+.callInfo p {
+  margin: 8px 0;
+  color: #b8b8d1;
+  line-height: 1.5;
+}
+
+.callInfo strong {
+  color: #e4e4e4;
+  font-weight: 600;
+}
+
+/* Custom scrollbar */
+.missedCalls::-webkit-scrollbar {
+  width: 8px;
+}
+
+.missedCalls::-webkit-scrollbar-track {
+  background: #1a1a2e;
+}
+
+.missedCalls::-webkit-scrollbar-thumb {
+  background: #363655;
+  border-radius: 4px;
+}
+
+.missedCalls::-webkit-scrollbar-thumb:hover {
+  background: #9d4edd;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .missedCalls {
+    padding: 20px;
+    margin: 15px;
+    border-radius: 12px;
+  }
+
+  .missedCalls h2 {
+    font-size: 1.75rem;
+    margin-bottom: 25px;
+  }
+
+  .device {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+
+  .device h3 {
+    font-size: 1.2rem;
+  }
+
+  .device h4 {
+    font-size: 1rem;
+  }
+
+  .callInfo {
+    padding: 12px;
+  }
+}
+
+/* Animation for new calls */
+@keyframes highlightNew {
+  0% {
+    background-color: rgba(157, 78, 221, 0.2);
+  }
+  100% {
+    background-color: #1e1e36;
+  }
+}
+
+.callInfo.new {
+  animation: highlightNew 2s ease-out forwards;
+}

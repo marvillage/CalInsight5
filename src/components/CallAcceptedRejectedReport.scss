@@ -1,0 +1,159 @@
+// CallAcceptedRejectedReport.scss
+
+.call-report {
+  background: linear-gradient(to bottom right, #f8f9fa, #ffffff);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  max-width: 1400px;
+  margin: 2rem auto;
+  
+  h1 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #2d3748;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(to right, #007bff, #6366f1);
+      border-radius: 2px;
+    }
+  }
+  
+  .call-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    
+    th, td {
+      padding: 1rem 1.25rem;
+      text-align: left;
+      border: none;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 0.95rem;
+      transition: background-color 0.2s ease;
+    }
+    
+    th {
+      background: linear-gradient(to right, #007bff, #0056b3);
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      
+      &:first-child {
+        border-top-left-radius: 8px;
+      }
+      
+      &:last-child {
+        border-top-right-radius: 8px;
+      }
+    }
+    
+    tr {
+      &:last-child {
+        td {
+          border-bottom: none;
+        }
+      }
+      
+      &:hover {
+        td {
+          background-color: #f8f9fa;
+        }
+      }
+    }
+    
+    .accepted {
+      background-color: rgba(52, 211, 153, 0.1);
+      border-left: 4px solid #34d399;
+      
+      td {
+        color: #065f46;
+        
+        &:first-child {
+          font-weight: 500;
+        }
+      }
+      
+      &:hover td {
+        background-color: rgba(52, 211, 153, 0.15);
+      }
+    }
+    
+    .rejected {
+      background-color: rgba(248, 113, 113, 0.1);
+      border-left: 4px solid #f87171;
+      
+      td {
+        color: #991b1b;
+        
+        &:first-child {
+          font-weight: 500;
+        }
+      }
+      
+      &:hover td {
+        background-color: rgba(248, 113, 113, 0.15);
+      }
+    }
+  }
+  
+  @media (max-width: 768px) {
+    padding: 1rem;
+    
+    h1 {
+      font-size: 1.5rem;
+    }
+    
+    .call-table {
+      th, td {
+        padding: 0.75rem 1rem;
+        font-size: 0.875rem;
+      }
+    }
+  }
+  
+  @media (max-width: 640px) {
+    .call-table {
+      display: block;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      
+      &::-webkit-scrollbar {
+        height: 8px;
+      }
+      
+      &::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+      }
+      
+      &::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 4px;
+        
+        &:hover {
+          background: #a8a8a8;
+        }
+      }
+    }
+  }
+}

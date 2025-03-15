@@ -1,0 +1,79 @@
+.frequent-call-detector {
+    padding: 20px;
+    background-color: #2c003e; // Dark purple background
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); // Darker shadow for depth
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+    color: #e0e0e0; // Light text color for contrast
+    font-family: 'Arial', sans-serif;
+}
+
+h1 {
+    color: #9b59b6;  // Light purple for heading
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    background-color: #3e1f56; // Darker purple background for list items
+    border: 1px solid #5d2a78; // Purple border
+    border-radius: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #e0e0e0; // Light text color
+    transition: transform 0.3s ease, box-shadow 0.3s ease; // Smooth transition
+
+    &:hover {
+        transform: translateY(-3px); // Slight lift effect on hover
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4); // Enhanced shadow on hover
+    }
+}
+
+p {
+    font-size: 18px;
+    color: #b0b0b0; // Light grey for contrast with background
+}
+
+@media (max-width: 768px) {
+    .frequent-call-detector {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    li {
+        font-size: 14px;
+    }
+
+    p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .frequent-call-detector {
+        max-width: 90%; // Adjust width for smaller screens
+    }
+
+    h1 {
+        font-size: 18px; // Smaller heading for small screens
+    }
+
+    li {
+        padding: 8px; // Compact padding for list items
+    }
+
+    p {
+        font-size: 14px; // Adjust paragraph size for small screens
+    }
+}

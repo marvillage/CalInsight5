@@ -11,52 +11,52 @@ import "./bigChartBox.scss";
 const data = [
   {
     name: "Sun",
-    books: 4000,
-    clothes: 2400,
-    electronic: 2400,
+    sentimentScore: 0.75, // Represents positive sentiment (0 to 1 scale)
+    conversationLength: 50, // Number of words in conversation
+    engagementLevel: 3.5, // Engagement level out of 5
   },
   {
     name: "Mon",
-    books: 3000,
-    clothes: 1398,
-    electronic: 2210,
+    sentimentScore: 0.65,
+    conversationLength: 40,
+    engagementLevel: 4.0,
   },
   {
     name: "Tue",
-    books: 2000,
-    clothes: 9800,
-    electronic: 2290,
+    sentimentScore: 0.70,
+    conversationLength: 60,
+    engagementLevel: 3.8,
   },
   {
     name: "Wed",
-    books: 2780,
-    clothes: 3908,
-    electronic: 2000,
+    sentimentScore: 0.85,
+    conversationLength: 55,
+    engagementLevel: 4.2,
   },
   {
     name: "Thu",
-    books: 1890,
-    clothes: 4800,
-    electronic: 2181,
+    sentimentScore: 0.60,
+    conversationLength: 45,
+    engagementLevel: 3.6,
   },
   {
     name: "Fri",
-    books: 2390,
-    clothes: 3800,
-    electronic: 2500,
+    sentimentScore: 0.80,
+    conversationLength: 65,
+    engagementLevel: 4.5,
   },
   {
     name: "Sat",
-    books: 3490,
-    clothes: 4300,
-    electronic: 2100,
+    sentimentScore: 0.70,
+    conversationLength: 50,
+    engagementLevel: 4.0,
   },
 ];
 
 const BigChartBox = () => {
   return (
     <div className="bigChartBox">
-      <h1>Revenue Analytics</h1>
+      <h1>Conversation Sentiment Analysis</h1>
       <div className="chart">
         <ResponsiveContainer width="99%" height="100%">
           <AreaChart
@@ -73,21 +73,21 @@ const BigChartBox = () => {
             <Tooltip />
             <Area
               type="monotone"
-              dataKey="electronic"
+              dataKey="sentimentScore"
               stackId="1"
               stroke="#8884d8"
               fill="#8884d8"
             />
             <Area
               type="monotone"
-              dataKey="clothes"
+              dataKey="conversationLength"
               stackId="1"
               stroke="#82ca9d"
               fill="#82ca9d"
             />
             <Area
               type="monotone"
-              dataKey="books"
+              dataKey="engagementLevel"
               stackId="1"
               stroke="#ffc658"
               fill="#ffc658"
@@ -100,3 +100,4 @@ const BigChartBox = () => {
 };
 
 export default BigChartBox;
+

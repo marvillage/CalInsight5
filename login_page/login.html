@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Inline styles for simplicity; you can move this to styles.css */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+        .content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            color: white;
+            text-align: center;
+        }
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745; /* Green button */
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #218838; /* Darker green on hover */
+        }
+        #error-message {
+            color: red;
+            display: none;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <video class="video-background" autoplay loop muted playsinline>
+        <source src="7021911_Technology_Information_1920x1080.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <div class="content">
+        <div class="login-container">
+            <h1>Login</h1>
+            <form id="loginForm">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required placeholder="Enter your username">
+                
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required placeholder="Enter your password">
+                
+                <label for="user-type">User Type:</label>
+                <select id="user-type" name="user-type" required>
+                    <option value="" disabled selected>Select user type</option>
+                    <option value="viewer">Viewer</option>
+                    <option value="admin">Admin</option>
+                    <option value="super-admin">Super Admin</option>
+                </select>
+                
+                <button type="submit">Login</button>
+            </form>
+            <div id="error-message">Access Denied: Invalid Username</div>
+        </div>
+    </div>
+
+    <script>
+        const allowedUsernames = ['admin1', 'admin2', 'admin3']; // Example admin usernames
+
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
+
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value; // Handle password logic if needed
+            const userType = document.getElementById('user-type').value;
+
+            // Check if the username is allowed
+            if (allowedUsernames.includes(username)) {
+                // Store user type in localStorage
+                localStorage.setItem('userType', userType);
+                // Redirect to the home page
+                window.location.href = 'home.html'; // Replace with your actual home page URL
+            } else {
+                // Show the error message
+                document.getElementById('error-message').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>

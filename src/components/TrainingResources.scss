@@ -1,0 +1,211 @@
+// Variables
+$background-dark: #0f172a;
+$card-bg: #1e293b;
+$primary-color: #38bdf8;
+$secondary-color: #f472b6;
+$text-primary: #f8fafc;
+$text-secondary: #94a3b8;
+$gradient-start: #38bdf8;
+$gradient-end: #818cf8;
+
+.trainingResources {
+    background: linear-gradient(135deg, rgba($background-dark, 0.95) 0%, rgba(darken($background-dark, 5%), 0.95) 100%);
+    min-height: 100vh;
+    padding: 3rem 1.5rem;
+    color: $text-primary;
+    font-family: 'Inter', system-ui, sans-serif;
+    position: relative;
+    overflow: hidden;
+
+    // Background pattern
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 15% 50%, rgba($gradient-start, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 85% 30%, rgba($gradient-end, 0.08) 0%, transparent 50%);
+        pointer-events: none;
+        z-index: 0;
+    }
+
+    // Content wrapper
+    .content-wrapper {
+        position: relative;
+        z-index: 1;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+        font-weight: 800;
+        text-align: center;
+        margin-bottom: 3rem;
+        background: linear-gradient(135deg, $gradient-start, $gradient-end);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        position: relative;
+        padding-bottom: 1rem;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, $gradient-start, $gradient-end);
+            border-radius: 2px;
+        }
+    }
+
+    section {
+        margin-bottom: 4rem;
+        animation: fadeInUp 0.6s ease-out forwards;
+
+        @for $i from 1 through 2 {
+            &:nth-child(#{$i}) {
+                animation-delay: #{$i * 0.2}s;
+            }
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            color: $text-primary;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            &::before {
+                content: '';
+                display: block;
+                width: 3px;
+                height: 24px;
+                background: linear-gradient(to bottom, $gradient-start, $gradient-end);
+                border-radius: 3px;
+            }
+        }
+
+        .resourceList {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            padding: 0.5rem;
+
+            .resourceItem {
+                background: $card-bg;
+                border-radius: 12px;
+                padding: 1.5rem;
+                transition: all 0.3s ease;
+                border: 1px solid rgba(255, 255, 255, 0.1);
+                position: relative;
+                overflow: hidden;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    height: 2px;
+                    background: linear-gradient(90deg, $gradient-start, $gradient-end);
+                    opacity: 0;
+                    transition: opacity 0.3s ease;
+                }
+
+                a {
+                    color: $text-primary;
+                    text-decoration: none;
+                    font-weight: 500;
+                    display: flex;
+                    align-items: center;
+                    gap: 0.75rem;
+                    position: relative;
+                    padding-left: 1.5rem;
+
+                    &::before {
+                        content: '';
+                        position: absolute;
+                        left: 0;
+                        width: 16px;
+                        height: 16px;
+                        background-size: contain;
+                        background-repeat: no-repeat;
+                    }
+                }
+
+                &:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+                    background: lighten($card-bg, 3%);
+                    border-color: rgba(255, 255, 255, 0.2);
+
+                    &::before {
+                        opacity: 1;
+                    }
+
+                    a {
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+    }
+
+    .pdfResources {
+        .resourceItem a::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2338bdf8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z'%3E%3C/path%3E%3C/svg%3E");
+        }
+    }
+
+    .videoResources {
+        .resourceItem a::before {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23f472b6'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z'%3E%3C/path%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M21 12a9 9 0 11-18 0 9 9 0 0118 0z'%3E%3C/path%3E%3C/svg%3E");
+        }
+    }
+
+    // Animations
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    // Responsive design
+    @media (max-width: 768px) {
+        padding: 2rem 1rem;
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+
+            h2 {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .resourceList {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+    }
+}

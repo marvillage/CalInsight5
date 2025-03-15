@@ -1,0 +1,85 @@
+// CallTagReport.scss
+
+.call-tag-report {
+    font-family: Arial, sans-serif;
+    color: #333;
+    padding: 20px;
+    background-color: #f4f6f8; // Light background for contrast
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+  
+    h1 {
+      color: #007bff; // Modern blue color for the main title
+      margin-bottom: 10px;
+      font-size: 24px; // Slightly larger font for prominence
+    }
+  
+    h2 {
+      color: #0056b3; // Darker blue for emphasis
+      margin-bottom: 20px;
+      font-size: 20px; // Slightly larger font for secondary title
+    }
+  
+    table {
+      width: 100%;
+      border-collapse: collapse; // Ensures borders are merged
+      margin-top: 10px;
+      border: 1px solid #007bff; // Border around the entire table
+  
+      th, td {
+        border: 1px solid #007bff; // Modern blue border
+        padding: 12px; // Increased padding for a more spacious look
+        text-align: left;
+        font-size: 16px; // Adjusted font size for readability
+        transition: background-color 0.3s; // Smooth transition for hover effects
+  
+        &:hover {
+          background-color: #e1f5ff; // Light blue on hover for interactivity
+        }
+      }
+  
+      th {
+        background-color: #007bff; // Header background color
+        color: white; // Header text color
+        font-weight: bold; // Bold text for headers
+        text-transform: uppercase; // Uppercase for a more formal look
+      }
+  
+      tbody {
+        tr:nth-child(even) {
+          background-color: #f9f9f9; // Light grey for even rows
+        }
+  
+        tr:nth-child(odd) {
+          background-color: #ffffff; // White for odd rows
+        }
+  
+        tr {
+          &:last-child td {
+            border-bottom: none; // Remove bottom border for the last row
+          }
+        }
+      }
+    }
+  
+    // Adding a bottom border to the table for a clearer ending boundary
+    table::after {
+      content: '';
+      display: block;
+      height: 5px; // Height of the boundary
+      background-color: #007bff; // Color of the boundary
+      border-radius: 0 0 8px 8px; // Rounded corners at the bottom
+    }
+  
+    // Optional responsive styles for smaller screens
+    @media (max-width: 768px) {
+      table {
+        font-size: 14px; // Smaller font size for smaller screens
+  
+        th, td {
+          padding: 8px; // Reduced padding for smaller screens
+        }
+      }
+    }
+  }
+  

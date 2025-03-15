@@ -1,0 +1,101 @@
+// Variables for a more polished blue theme
+$primary-blue: #007bff;
+$light-blue: #e0f7ff; // Softer, lighter blue for the background
+$dark-blue: #0056b3;
+$text-color: #333;
+$table-header-bg: linear-gradient(135deg, #007bff, #0056b3); // Gradient for table header
+$table-header-text-color: #fff;
+$table-border-color: #ccc;
+$box-shadow-color: rgba(0, 0, 0, 0.1);
+$transition-speed: 0.3s;
+
+.chat-container {
+  width: 80%;
+  margin: 0 auto;
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color: $text-color;
+  padding: 20px;
+  border-radius: 10px;
+  background: #f7faff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.chat-box {
+  background-color: $light-blue;
+  border: 1px solid $table-border-color;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  padding: 20px;
+  box-shadow: 0 5px 15px $box-shadow-color;
+  transition: box-shadow $transition-speed ease;
+
+  &:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.chat-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  margin-bottom: 15px;
+  font-weight: bold;
+
+  .chat-date, .chat-duration {
+    color: $dark-blue;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+}
+
+.chat-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border: 1px solid $table-border-color;
+    font-size: 14px;
+  }
+
+  thead {
+    background-color: $table-header-bg;
+    color: $table-header-text-color;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    th {
+      padding: 15px;
+      border: none;
+    }
+  }
+
+  tbody tr {
+    &:nth-child(even) {
+      background-color: #f1f9ff;
+    }
+
+    &:nth-child(odd) {
+      background-color: #ffffff;
+    }
+  }
+
+  .speaker-name {
+    font-weight: 600;
+    color: $primary-blue;
+  }
+
+  .transcript-line {
+    margin: 8px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: darken($text-color, 10%);
+  }
+}
+
+// Add subtle animation for hover effects
+.chat-box:hover {
+  transform: translateY(-3px);
+}

@@ -1,0 +1,203 @@
+// Modern color palette with better contrast
+$primary-dark: #111827;
+$primary-light: #1f2937;
+$accent-blue: #3b82f6;
+$accent-blue-light: #60a5fa;
+$text-primary: #ffffff;
+$text-secondary: #cbd5e1;
+$success-green: #10b981;
+$card-bg: rgba(31, 41, 55, 0.95);  // Darker, more opaque background
+$gradient-start: #111827;
+$gradient-end: #1f2937;
+
+// Enhanced glass effect with more visibility
+@mixin glass-effect {
+  background: $card-bg;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 
+              0 2px 4px rgba(0, 0, 0, 0.06), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@mixin card-hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3),
+              0 4px 8px rgba(0, 0, 0, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+@mixin smooth-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.callStatsDetails {
+  background: linear-gradient(135deg, rgba($gradient-start, 0.98) 0%, rgba($gradient-end, 0.98) 100%);
+  color: $text-primary;
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  max-width: 1200px;
+  margin: 2rem auto;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+
+  h1 {
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(120deg, $accent-blue 0%, $accent-blue-light 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .summary {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
+
+    .statItem {
+      background: rgba($primary-light, 0.95);
+      padding: 1.75rem;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      @include smooth-transition;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        @include card-hover;
+        background: rgba(lighten($primary-light, 5%), 0.95);
+      }
+
+      h3 {
+        margin: 0 0 1rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: $accent-blue-light;
+        letter-spacing: -0.3px;
+      }
+
+      p {
+        margin: 0.5rem 0;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: $text-primary;
+
+        &:last-child {
+          color: $accent-blue-light;
+          font-size: 1rem;
+          opacity: 0.9;
+        }
+      }
+    }
+  }
+
+  .shiftDetails {
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba($primary-light, 0.95);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      margin: 0;
+      font-size: 1.25rem;
+      color: $text-secondary;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &::after {
+        content: attr(data-value);
+        font-size: 2rem;
+        color: $accent-blue-light;
+        margin-top: 0.5rem;
+        font-weight: 700;
+      }
+    }
+  }
+
+  .durationList {
+    background: rgba($primary-light, 0.95);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 2rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    h2 {
+      margin: 0 0 1.5rem;
+      font-size: 1.5rem;
+      color: $accent-blue-light;
+      font-weight: 600;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+
+      li {
+        padding: 1rem;
+        background: rgba($primary-dark, 0.7);
+        border-radius: 12px;
+        @include smooth-transition;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.95rem;
+        color: $text-primary;
+
+        &:hover {
+          background: rgba(lighten($primary-dark, 5%), 0.7);
+          transform: translateX(4px);
+          border-color: rgba(255, 255, 255, 0.15);
+        }
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .callStatsDetails {
+    padding: 1.5rem;
+    margin: 1rem;
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .summary {
+      grid-template-columns: 1fr;
+    }
+
+    .shiftDetails {
+      padding: 1.5rem;
+      
+      h2 {
+        font-size: 1.1rem;
+        
+        &::after {
+          font-size: 1.5rem;
+        }
+      }
+    }
+
+    .durationList ul {
+      grid-template-columns: 1fr;
+    }
+  }
+}

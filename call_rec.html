@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio Files</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #2c3447 0%, #1a1f2c 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background: #f0f2f5;
+            padding: 30px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(44, 52, 71, 0.2);
+        }
+
+        h1 {
+            color: #2c3447;
+            margin-bottom: 30px;
+            font-size: 2.2em;
+            font-weight: 600;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #2c344720;
+        }
+
+        .file-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .file-item {
+            margin: 16px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid #2c344715;
+            cursor: pointer;
+        }
+
+        .file-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(44, 52, 71, 0.1);
+            border-color: #2c344730;
+        }
+
+        .file-item.playing {
+            background: #2c3447;
+            color: white;
+        }
+
+        .file-item.playing .file-info {
+            color: #ffffff;
+            opacity: 0.8;
+        }
+
+        .file-content {
+            padding: 20px 25px;
+            background: #e8eaed;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .file-item.playing .file-content {
+            background: #2c3447;
+        }
+
+        .file-content::before {
+            content: '🎵';
+            margin-right: 12px;
+            font-size: 1.1em;
+            opacity: 0.8;
+        }
+
+        .file-title {
+            font-size: 1.1em;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .file-info {
+            color: #2c3447;
+            opacity: 0.7;
+            font-size: 0.9em;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .file-info span {
+            display: flex;
+            align-items: center;
+        }
+
+        .file-info span::before {
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: currentColor;
+            opacity: 0.5;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        /* Audio Player Styles */
+        .audio-player {
+            background: #2c3447;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 30px;
+            color: white;
+        }
+
+        .player-title {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            opacity: 0.9;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .play-btn {
+            background: #ffffff;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn:hover {
+            transform: scale(1.1);
+        }
+
+        .time-control {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .time {
+            font-size: 0.9em;
+            opacity: 0.8;
+            min-width: 45px;
+        }
+
+        .progress {
+            flex-grow: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-bar {
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            background: #ffffff;
+            border-radius: 2px;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 20px auto;
+                padding: 20px;
+            }
+
+            .player-controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .time-control {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Audio Files</h1>
+        <ul class="file-list">
+            <li class="file-item" data-file="rec1.mp3">
+                <div class="file-content">
+                    <div class="file-title">Sales Call - Shashwat Nayak</div>
+                    <div class="file-info">
+                        <span>Date: 2024-10-23</span>
+                        <span>Duration: 1:13</span>
+                        <span>File: file1.mp3</span>
+                    </div>
+                </div>
+            </li>
+            <li class="file-item" data-file="rec2.mp3">
+                <div class="file-content">
+                    <div class="file-title">Customer Support - Kushagra Shrivastava</div>
+                    <div class="file-info">
+                        <span>Date: 2024-10-23</span>
+                        <span>Duration: 49 sec</span>
+                        <span>File: file2.wav</span>
+                    </div>
+                </div>
+            </li>
+            <li class="file-item" data-file="rec3.mp3">
+                <div class="file-content">
+                    <div class="file-title">Team Meeting - Project Alpha</div>
+                    <div class="file-info">
+                        <span>Date: 2024-10-23</span>
+                        <span>Duration: 56sec</span>
+                        <span>File: file3.m4a</span>
+                    </div>
+                </div>
+            </li>
+        </ul>
+
+        <div class="audio-player">
+            <div class="player-title">Now Playing: Select a file to play</div>
+            <div class="player-controls">
+                <button class="play-btn">▶</button>
+                <div class="time-control">
+                    <span class="time current-time">0:00</span>
+                    <div class="progress">
+                        <div class="progress-bar" style="width: 0%"></div>
+                    </div>
+                    <span class="time duration">0:00</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const audio = new Audio();
+            const playBtn = document.querySelector('.play-btn');
+            const progressBar = document.querySelector('.progress-bar');
+            const progress = document.querySelector('.progress');
+            const currentTimeEl = document.querySelector('.current-time');
+            const durationEl = document.querySelector('.duration');
+            const playerTitle = document.querySelector('.player-title');
+            const fileItems = document.querySelectorAll('.file-item');
+            
+            let currentFile = null;
+
+            // Format time in minutes:seconds
+            function formatTime(seconds) {
+                const minutes = Math.floor(seconds / 60);
+                seconds = Math.floor(seconds % 60);
+                return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            // Update progress bar and time
+            audio.addEventListener('timeupdate', () => {
+                const percent = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audio.currentTime);
+            });
+
+            // Update duration when metadata is loaded
+            audio.addEventListener('loadedmetadata', () => {
+                durationEl.textContent = formatTime(audio.duration);
+            });
+
+            // Handle play/pause
+            playBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    if (currentFile) {
+                        audio.play();
+                        playBtn.textContent = '⏸';
+                    }
+                } else {
+                    audio.pause();
+                    playBtn.textContent = '▶';
+                }
+            });
+
+            // Handle progress bar clicking
+            progress.addEventListener('click', (e) => {
+                const rect = progress.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                audio.currentTime = percent * audio.duration;
+            });
+
+            // Handle file selection
+            fileItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const file = item.dataset.file;
+                    const title = item.querySelector('.file-title').textContent;
+
+                    // Remove playing class from all items
+                    fileItems.forEach(i => i.classList.remove('playing'));
+                    
+                    // Add playing class to clicked item
+                    item.classList.add('playing');
+
+                    if (currentFile !== file) {
+                        currentFile = file;
+                        audio.src = file;
+                        playerTitle.textContent = 'Now Playing: ' + title;
+                        audio.play();
+                        playBtn.textContent = '⏸';
+                    } else {
+                        if (audio.paused) {
+                            audio.play();
+                            playBtn.textContent = '⏸';
+                        } else {
+                            audio.pause();
+                            playBtn.textContent = '▶';
+                        }
+                    }
+                });
+            });
+
+            // Handle audio ending
+            audio.addEventListener('ended', () => {
+                playBtn.textContent = '▶';
+                progressBar.style.width = '0%';
+                currentTimeEl.textContent = '0:00';
+            });
+        });
+    </script>
+</body>
+</html>

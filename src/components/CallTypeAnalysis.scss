@@ -1,0 +1,58 @@
+.call-type-analysis {
+    background-color: #0a2540; /* Dark blue background */
+    color: #ffffff; /* White text for contrast */
+    padding: 20px;
+    border-radius: 10px;
+  
+    .dashboard-heading {
+      font-size: 32px;
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 30px; /* Adding space below the heading */
+      font-family: 'Roboto', sans-serif;
+    }
+  
+    .call-type-container {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px; /* Space between the boxes */
+    }
+  
+    .call-type-box {
+      background-color: #142f56; /* Slightly lighter blue for the boxes */
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+      width: 22%;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+  
+      h3 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: #e0e0e0;
+      }
+  
+      p {
+        font-size: 28px;
+        font-weight: bold;
+        color: #00e676; /* Bright green for data numbers */
+      }
+  
+      &:hover {
+        background-color: #1f3b6b; /* Darker blue on hover */
+        transform: translateY(-10px); /* Lift effect on hover */
+      }
+    }
+  
+    @media (max-width: 768px) {
+      .call-type-container {
+        flex-direction: column;
+        .call-type-box {
+          width: 100%;
+        }
+      }
+    }
+  }
+  
