@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../../firebase';
-import './TopBox.scss';
+import './topBox.scss';
 import { Link } from "react-router-dom";
 
 
