@@ -1,4 +1,4 @@
-import { CallData, CallHistoryData } from '../types/firebase';
+import { CallHistoryData } from '../types/firebase';
 
 export const callLogData: CallHistoryData = {
   "Device1": {

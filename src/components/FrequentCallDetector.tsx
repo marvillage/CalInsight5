@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { ref, onValue } from 'firebase/database';  // Firebase imports
-import { db } from '../firebase';  // Firebase database instance
+import { useEffect, useState } from 'react';
+import { ref, onValue } from 'firebase/database';
+import { db } from '../firebase';
 import './FrequentCallDetector.scss';
 import { CallData, CallHistoryData } from '../types/firebase';
 

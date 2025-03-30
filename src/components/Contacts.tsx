@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { db } from '../firebase';  // Import the Firebase Realtime Database instance
-import { ref, onValue } from 'firebase/database';  // Import Realtime Database functions
-import './Contact.scss';  // Import the SCSS file
+import { useEffect, useState } from 'react';
+import { ref, onValue } from 'firebase/database';
+import { db } from '../firebase';
+import './Contact.scss';
 import { CallData, CallHistoryData } from '../types/firebase';
 
 interface Contact {

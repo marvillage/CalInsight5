@@ -48,15 +48,10 @@ import Chat from "./components/chat.tsx";
 const queryClient = new QueryClient();
 
 function App() {
-  const [user, setUser] = useState<{
-    name: string;
-    email: string;
-    role: string;
-  } | null>(null);
+  const [userType, setUserType] = useState<string | null>(null);
 
   const handleIncidentEdit = (incident: Incident) => {
-    // Handle incident edit here
-    console.log('Incident edited:', incident);
+    // Handle incident edit
   };
 
   const Layout = () => {
@@ -69,7 +64,7 @@ function App() {
           </div>
           <div className="contentContainer">
             <QueryClientProvider client={queryClient}>
-              <Outlet context={{ setUser }} />
+              <Outlet context={{ setUserType }} />
             </QueryClientProvider>
           </div>
         </div>
@@ -215,7 +210,7 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login setUser={setUser} />,
+      element: <Login setUserType={setUserType} />,
     },
   ]);
 

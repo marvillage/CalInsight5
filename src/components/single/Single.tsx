@@ -1,9 +1,5 @@
-import { useParams } from "react-router-dom";
-import { singleUserData } from "../../data";
+import { singleUser } from "../../data";
 import "./single.scss";
-import Sidebar from "../../components/sidebar/Sidebar";
-import Navbar from "../../components/navbar/Navbar";
-import { Link } from "react-router-dom";
 import {
   Legend,
   Line,
@@ -14,82 +10,55 @@ import {
   YAxis,
 } from "recharts";
 
-type Props = {
-  id: number;
-  img?: string;
-  title: string;
-  info: object;
-  chart?: {
-    dataKeys: { name: string; color: string }[];
-    data: object[];
-  };
-  activities?: { time: string; text: string }[];
-};
+const Single = () => {
+  const data = singleUser;
 
-const Single = (props: Props) => {
   return (
     <div className="single">
-      <div className="view">
-        <div className="info">
-          <div className="topInfo">
-            {props.img && <img src={props.img} alt="" />}
-            <h1>{props.title}</h1>
-            <button style={{ color: 'blue' }}>Modify</button>
-          </div>
-          <div className="details">
-            {Object.entries(props.info).map((item) => (
-              <div className="item" key={item[0]}>
-                <span className="itemTitle">{item[0]}</span>
-                <span className="itemValue">{item[1]}</span>
+      <div className="singleContainer">
+        <div className="top">
+          <div className="left">
+            <a href="/users" className="backButton">
+              Back to Users
+            </a>
+            <h1 className="title">Information</h1>
+            <div className="item">
+              <img
+                src={data.img}
+                alt=""
+                className="itemImg"
+              />
+              <div className="details">
+                <h1 className="itemTitle">{data.title}</h1>
+                <div className="detailItem">
+                  <span className="itemKey">Email:</span>
+                  <span className="itemValue">{data.info.email}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Phone:</span>
+                  <span className="itemValue">{data.info.phone}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Address:</span>
+                  <span className="itemValue">
+                    {data.info.fullname}
+                  </span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Country:</span>
+                  <span className="itemValue">{data.info.status}</span>
+                </div>
               </div>
-            ))}
+            </div>
+          </div>
+          <div className="right">
+            <Chart aspect={3 / 1} title="User Spending ( Last 6 Months)" />
           </div>
         </div>
-        <hr />
-        {props.chart && (
-          <div className="chart">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart
-                width={500}
-                height={300}
-                data={props.chart.data}
-                margin={{
-                  top: 5,
-                  right: 30,
-                  left: 20,
-                  bottom: 5,
-                }}
-              >
-                <XAxis dataKey="name" />
-                <YAxis />
-                <Tooltip />
-                <Legend />
-                {props.chart.dataKeys.map((dataKey) => (
-                  <Line
-                    type="monotone"
-                    dataKey={dataKey.name}
-                    stroke={dataKey.color}
-                  />
-                ))}
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
-        )}
-      </div>
-      <div className="activities">
-        <h2>Latest Activities</h2>
-        {props.activities && (
-          <ul>
-            {props.activities.map((activity) => (
-              <li key={activity.text}>
-                <div>
-                  <p>{activity.text}</p>
-                  <time>{activity.time}</time>
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
+        <div className="bottom">
+          <h1 className="title">Last Transactions</h1>
+          <List />
+        </div>
       </div>
     </div>
   );

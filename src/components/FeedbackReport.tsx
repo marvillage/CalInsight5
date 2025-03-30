@@ -30,36 +30,6 @@ interface FeedbackMetrics {
 
 const FeedbackReport: React.FC = () => {
   const [feedbackData, setFeedbackData] = useState<FeedbackData[]>([]);
-  const [metrics, setMetrics] = useState<FeedbackMetrics>({
-    understandingNeeds: {
-      Excellent: 0,
-      VeryGood: 0,
-      Good: 0,
-      Average: 0,
-      Poor: 0
-    },
-    recommendationLikelihood: {
-      Excellent: 0,
-      VeryGood: 0,
-      Good: 0,
-      Average: 0,
-      Poor: 0
-    },
-    issueResolution: {
-      Excellent: 0,
-      VeryGood: 0,
-      Good: 0,
-      Average: 0,
-      Poor: 0
-    },
-    friendliness: {
-      Excellent: 0,
-      VeryGood: 0,
-      Good: 0,
-      Average: 0,
-      Poor: 0
-    }
-  });
 
   useEffect(() => {
     setFeedbackData(customerFeedback);

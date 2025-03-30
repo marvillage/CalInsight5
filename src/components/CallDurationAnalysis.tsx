@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { callStats } from "../../callStats"; // Adjust the path as needed
+import { callStats } from "../../callStats";
 import "./CallStats.scss";
 
 const CallStatsDetails = () => {

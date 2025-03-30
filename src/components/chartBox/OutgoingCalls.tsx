@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import { ref, onValue } from 'firebase/database';  // Firebase imports
-import { db } from '../../firebase';  // Import the Firebase database instance
-import './OutgoingCalls.scss';  // Import SCSS file
+import { useEffect, useState } from 'react';
+import { ref, onValue } from 'firebase/database';
+import { db } from '../../firebase';
+import './OutgoingCalls.scss';
 import { CallData, CallHistoryData } from '../../types/firebase';
 
 const OutgoingCalls: React.FC = () => {

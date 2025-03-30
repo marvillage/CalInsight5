@@ -1,12 +1,8 @@
 // CallLog.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { callLogData } from '../../data/callLog';
 import './CallLog.scss'; // Ensure the SCSS path is correct
-
-interface CallData {
-  name: string;
-  duration: string;
-}
+import { CallData, CallHistoryData } from '../../types/firebase';
 
 interface CallLogData {
   [device: string]: {
@@ -17,22 +13,32 @@ interface CallLogData {
 }
 
 const CallLog: React.FC = () => {
-  const typedData = callLogData as CallLogData;
-  
+  const [data, setData] = useState<CallLogData | null>(null);
+
+  useEffect(() => {
+    setData(callLogData as unknown as CallLogData);
+  }, []);
+
+  if (!data) {
+    return <div>Loading call log data...</div>;
+  }
+
   return (
     <div className="callLog">
-      <h2>Call Log</h2>
-      {Object.keys(typedData).map((device) => (
-        <div key={device} className="device">
-          <h3>{device}</h3>
-          {Object.keys(typedData[device]).map((date) => (
-            <div key={date} className="date">
-              <h4>{date}</h4>
-              {Object.entries(typedData[device][date]).map(([time, call]) => (
-                <div key={time} className="callInfo">
-                  <p><strong>Time:</strong> {time}</p>
-                  <p><strong>Contact Name:</strong> {call.name}</p>
-                  <p><strong>Duration:</strong> {call.duration}</p>
+      <h1>Call Log</h1>
+      {Object.entries(data).map(([device, dates]) => (
+        <div key={device} className="deviceSection">
+          <h2>Device: {device}</h2>
+          {Object.entries(dates).map(([date, times]) => (
+            <div key={date} className="dateSection">
+              <h3>Date: {date}</h3>
+              {Object.entries(times).map(([time, call]) => (
+                <div key={time} className="callSection">
+                  <h4>Time: {time}</h4>
+                  <p>Contact: {call.contactName}</p>
+                  <p>Phone: {call.phNumber}</p>
+                  <p>Duration: {call.callDuration}</p>
+                  <p>Type: {call.callType}</p>
                 </div>
               ))}
             </div>
