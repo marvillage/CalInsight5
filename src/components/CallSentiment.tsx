@@ -2,31 +2,9 @@ import { callSentimentData } from '../data/callSentiment';
 import './CallSentiment.scss';
 import { useState, useEffect } from 'react';
 
-interface EmotionScores {
-  joy: number;
-  anger: number;
-  sadness: number;
-  fear: number;
-  surprise: number;
-}
 
-interface SentimentAnalysis {
-  sentimentScore: number;
-  comparative: number;
-  keywords: string[];
-  comments: string;
-  emotionScores: EmotionScores;
-  overallSentiment: string;
-  context: string;
-  conclusion: string;
-}
 
-interface CallData {
-  date: string;
-  name: string;
-  duration: string;
-  sentimentAnalysis: SentimentAnalysis;
-}
+
 
 interface CallSentimentData {
   [device: string]: {

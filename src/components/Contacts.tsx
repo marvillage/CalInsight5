@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../firebase';
 import './Contact.scss';
-import { CallData, CallHistoryData } from '../types/firebase';
 
 interface Contact {
   contactName: string;

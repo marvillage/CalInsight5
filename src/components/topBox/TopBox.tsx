@@ -3,7 +3,7 @@ import { ref, onValue } from 'firebase/database';
 import { db } from '../../firebase';
 import './TopBox.scss';
 import { Link } from "react-router-dom";
-import { CallData, CallHistoryData } from '../../types/firebase';
+
 
 interface CallDetails {
   callDate: string;

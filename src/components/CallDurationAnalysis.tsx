@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+
 import { callStats } from "../../callStats";
 import "./CallStats.scss";
 

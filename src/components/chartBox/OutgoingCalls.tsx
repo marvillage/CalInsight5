@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { ref, onValue } from 'firebase/database';
 import { db } from '../../firebase';
 import './OutgoingCalls.scss';
-import { CallData, CallHistoryData } from '../../types/firebase';
+
 
 const OutgoingCalls: React.FC = () => {
   const [outgoingCallData, setOutgoingCallData] = useState<any>(null);  // Use state to store outgoing call data

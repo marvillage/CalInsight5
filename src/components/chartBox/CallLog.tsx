@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from 'react';
 import { callLogData } from '../../data/callLog';
 import './CallLog.scss'; // Ensure the SCSS path is correct
-import { CallData, CallHistoryData } from '../../types/firebase';
+import { CallData } from '../../types/firebase';
 
 interface CallLogData {
   [device: string]: {
