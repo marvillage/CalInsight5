@@ -1,4 +1,4 @@
-import { callSentimentData } from '../../callSentiment';
+import { callSentimentData } from '../data/callSentiment';
 import './CallSentiment.scss';
 
 interface EmotionScores {

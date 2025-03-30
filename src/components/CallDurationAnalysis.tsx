@@ -1,4 +1,4 @@
-import React from "react";
+import { useEffect, useState } from 'react';
 import { callStats } from "../../callStats"; // Adjust the path as needed
 import "./CallStats.scss";
 

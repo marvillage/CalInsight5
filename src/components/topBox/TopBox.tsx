@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
-import { ref, onValue } from "firebase/database";  // Import ref and onValue for database interaction
-import { db } from "../../firebase";  // Import the initialized db
-import "./topBox.scss";
+import { useEffect, useState } from 'react';
+import { ref, onValue } from 'firebase/database';
+import { db } from '../../firebase';
+import './TopBox.scss';
 import { Link } from "react-router-dom";
+import { CallData, CallHistoryData } from '../../types/firebase';
 
 interface CallDetails {
   callDate: string;

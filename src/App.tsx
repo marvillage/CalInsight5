@@ -48,7 +48,11 @@ import Chat from "./components/chat.tsx";
 const queryClient = new QueryClient();
 
 function App() {
-  const [userType, setUserType] = useState<string | null>(null);
+  const [user, setUser] = useState<{
+    name: string;
+    email: string;
+    role: string;
+  } | null>(null);
 
   const handleIncidentEdit = (incident: Incident) => {
     // Handle incident edit here
@@ -65,7 +69,7 @@ function App() {
           </div>
           <div className="contentContainer">
             <QueryClientProvider client={queryClient}>
-              <Outlet context={{ setUserType }} />
+              <Outlet context={{ setUser }} />
             </QueryClientProvider>
           </div>
         </div>
@@ -165,7 +169,7 @@ function App() {
         },
         {
           path: "/view-query",
-          element: <ViewQuery />,
+          element: <ViewQuery onEdit={handleIncidentEdit} />,
         },
         {
           path: "/compilance-detector",
@@ -211,7 +215,7 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login setUserType={setUserType} />,
+      element: <Login setUser={setUser} />,
     },
   ]);
 

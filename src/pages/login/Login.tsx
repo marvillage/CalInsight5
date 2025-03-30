@@ -1,10 +1,10 @@
 import { Dispatch, SetStateAction } from 'react';
 
 interface LoginProps {
-  setUserType: Dispatch<SetStateAction<string | null>>;
+  setUser: (user: { name: string; email: string; role: string } | null) => void;
 }
 
-const Login = ({ setUserType }: LoginProps) => {
+const Login: React.FC<LoginProps> = ({ setUser }) => {
   return (
     <div>Login</div>
   )

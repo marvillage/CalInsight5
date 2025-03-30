@@ -4,15 +4,69 @@ import { customerFeedback } from '../../customerFeedback'; // Adjust the path as
 import { PieChart, Pie, Cell, BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, Legend } from 'recharts';
 import './FeedbackReport.scss'; // Import the updated SCSS
 
+interface FeedbackData {
+  customerName: string;
+  contactNumber: string;
+  email: string;
+  feedback: {
+    understandingNeeds: string;
+    recommendationLikelihood: string;
+    issueResolution: string;
+    friendliness: string;
+    issueResolved: string;
+    generalFeedback: string;
+    suggestions: string;
+  };
+}
+
+type Rating = 'Excellent' | 'VeryGood' | 'Good' | 'Average' | 'Poor';
+type MetricKey = 'understandingNeeds' | 'recommendationLikelihood' | 'issueResolution' | 'friendliness';
+
+interface FeedbackMetrics {
+  [key: string]: {
+    [rating in Rating]: number;
+  };
+}
+
 const FeedbackReport: React.FC = () => {
-  const [feedbackData, setFeedbackData] = useState<any[]>([]);
+  const [feedbackData, setFeedbackData] = useState<FeedbackData[]>([]);
+  const [metrics, setMetrics] = useState<FeedbackMetrics>({
+    understandingNeeds: {
+      Excellent: 0,
+      VeryGood: 0,
+      Good: 0,
+      Average: 0,
+      Poor: 0
+    },
+    recommendationLikelihood: {
+      Excellent: 0,
+      VeryGood: 0,
+      Good: 0,
+      Average: 0,
+      Poor: 0
+    },
+    issueResolution: {
+      Excellent: 0,
+      VeryGood: 0,
+      Good: 0,
+      Average: 0,
+      Poor: 0
+    },
+    friendliness: {
+      Excellent: 0,
+      VeryGood: 0,
+      Good: 0,
+      Average: 0,
+      Poor: 0
+    }
+  });
 
   useEffect(() => {
     setFeedbackData(customerFeedback);
   }, []);
 
   // Prepare data for charts
-  const feedbackMetrics = {
+  const feedbackMetrics: FeedbackMetrics = {
     understandingNeeds: { Excellent: 0, VeryGood: 0, Good: 0, Average: 0, Poor: 0 },
     recommendationLikelihood: { Excellent: 0, VeryGood: 0, Good: 0, Average: 0, Poor: 0 },
     issueResolution: { Excellent: 0, VeryGood: 0, Good: 0, Average: 0, Poor: 0 },
@@ -20,8 +74,9 @@ const FeedbackReport: React.FC = () => {
   };
 
   feedbackData.forEach(feedback => {
-    Object.keys(feedbackMetrics).forEach(key => {
-      feedbackMetrics[key][feedback.feedback[key]]++;
+    (Object.keys(feedbackMetrics) as MetricKey[]).forEach(key => {
+      const rating = feedback.feedback[key] as Rating;
+      feedbackMetrics[key][rating]++;
     });
   });
 
@@ -46,7 +101,7 @@ const FeedbackReport: React.FC = () => {
     <div className="feedback-report">
       <h1>Customer Feedback Report</h1>
 
-      <h2>Pie Chart of Feedback0</h2>
+      <h2>Pie Chart of Feedback</h2>
       <PieChart width={500} height={500}>
         <Pie
           data={pieData}
@@ -58,7 +113,7 @@ const FeedbackReport: React.FC = () => {
           nameKey="name"
           label
         >
-          {pieData.map((entry, index) => (
+          {pieData.map((_, index) => (
             <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
           ))}
         </Pie>

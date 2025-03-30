@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { ref, onValue } from 'firebase/database';  // Firebase imports
 import { db } from '../firebase';  // Firebase database instance
 import './FrequentCallDetector.scss';
+import { CallData, CallHistoryData } from '../types/firebase';
 
 const FrequentCallDetector: React.FC = () => {
     const [callers, setCallers] = useState<{ [key: string]: number }>({});

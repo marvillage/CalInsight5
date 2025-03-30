@@ -1,3 +1,9 @@
+import { useParams } from "react-router-dom";
+import { singleUserData } from "../../data";
+import "./single.scss";
+import Sidebar from "../../components/sidebar/Sidebar";
+import Navbar from "../../components/navbar/Navbar";
+import { Link } from "react-router-dom";
 import {
   Legend,
   Line,
@@ -7,8 +13,6 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import "./single.scss";
-import { colors } from "@mui/material";
 
 type Props = {
   id: number;

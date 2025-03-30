@@ -1,6 +1,6 @@
 // CallLog.tsx
 import React from 'react';
-import { callLogData } from '../../callLogData'; // Ensure the import path is correct
+import { callLogData } from '../../data/callLog';
 import './CallLog.scss'; // Ensure the SCSS path is correct
 
 interface CallData {
