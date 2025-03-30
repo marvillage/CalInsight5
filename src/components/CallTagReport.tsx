@@ -2,8 +2,27 @@
 import React, { useEffect, useState } from 'react';
 import { complianceMetrics } from '../../tag'; // Adjust the path as necessary
 import './CallTagReport.scss';
+
+interface Tag {
+  tag: string;
+  description: string;
+}
+
+interface Call {
+  customerName: string;
+  callDate: string;
+  callTime: string;
+  tags: Tag[];
+}
+
+interface Metrics {
+  name: string;
+  overallComplianceScore: number;
+  calls: Call[];
+}
+
 const CallTagReport: React.FC = () => {
-  const [metrics, setMetrics] = useState<any>(null); // Adjust type as needed
+  const [metrics, setMetrics] = useState<Metrics | null>(null);
 
   useEffect(() => {
     // Simulate fetching data
@@ -33,8 +52,8 @@ const CallTagReport: React.FC = () => {
           </tr>
         </thead>
         <tbody>
-          {metrics.calls.map((call, index) =>
-            call.tags.map((tag, tagIndex) => (
+          {metrics.calls.map((call: Call, index: number) =>
+            call.tags.map((tag: Tag, tagIndex: number) => (
               <tr key={`${index}-${tagIndex}`}>
                 {tagIndex === 0 && (
                   <>

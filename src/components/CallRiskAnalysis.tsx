@@ -1,19 +1,47 @@
-import React from 'react';
 import { callRiskData } from '../../callRiskAnalysis';
 import './CallRiskAnalysis.scss';
 
+interface RiskAnalysis {
+  highLatencyRisk: boolean;
+  packetLossRisk: boolean;
+  interruptionRisk: string;
+  connectionStabilityRisk: string;
+  responseDelayRisk: string;
+  MOSRisk: string;
+  overallRiskLevel: string;
+  riskFactors: string[];
+  recommendedActions: string[];
+}
+
+interface CallData {
+  date: string;
+  name: string;
+  duration: string;
+  riskAnalysis: RiskAnalysis;
+}
+
+interface CallRiskData {
+  [device: string]: {
+    [date: string]: {
+      [time: string]: CallData;
+    };
+  };
+}
+
 const CallRiskAnalysis = () => {
+  const typedData = callRiskData as CallRiskData;
+  
   return (
     <div className="call-risk-analysis">
       <h1>Call Risk Analysis Dashboard</h1>
-      {Object.keys(callRiskData).map((device) => (
+      {Object.keys(typedData).map((device) => (
         <div key={device} className="device-section">
           <h2>Device: {device}</h2>
-          {Object.keys(callRiskData[device]).map((date) => (
+          {Object.keys(typedData[device]).map((date) => (
             <div key={date} className="date-section">
               <h3>Date: {date}</h3>
-              {Object.keys(callRiskData[device][date]).map((time) => {
-                const call = callRiskData[device][date][time];
+              {Object.keys(typedData[device][date]).map((time) => {
+                const call = typedData[device][date][time];
                 return (
                   <div key={time} className="call-card">
                     <h4>Time: {time}</h4>
@@ -32,7 +60,7 @@ const CallRiskAnalysis = () => {
                     <div className="actions">
                       <h5>Recommended Actions</h5>
                       <ul>
-                        {call.riskAnalysis.recommendedActions.map((action, index) => (
+                        {call.riskAnalysis.recommendedActions.map((action: string, index: number) => (
                           <li key={index}>{action}</li>
                         ))}
                       </ul>

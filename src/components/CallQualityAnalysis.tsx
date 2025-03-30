@@ -1,19 +1,49 @@
-import React from 'react';
 import { callQualityData } from '../../callquality';
 import './CallQualityAnalysis.scss';
 
+interface RecordingQuality {
+  jitter: string;
+  latency: string;
+  packetLoss: string;
+  MOS: string;
+  SNR: string;
+  bandwidthUsage: string;
+  callCompletionTime: string;
+  RTT: string;
+  audioClarity: string;
+  interruptions: string;
+  responseTime: string;
+}
+
+interface CallData {
+  date: string;
+  name: string;
+  duration: string;
+  recordingQuality: RecordingQuality;
+}
+
+interface CallQualityData {
+  [device: string]: {
+    [date: string]: {
+      [time: string]: CallData;
+    };
+  };
+}
+
 const CallQualityAnalysis = () => {
+  const typedData = callQualityData as CallQualityData;
+  
   return (
     <div className="call-quality-analysis">
       <h1>Call Recording Quality Analysis</h1>
-      {Object.keys(callQualityData).map((device) => (
+      {Object.keys(typedData).map((device) => (
         <div key={device}>
           <h2>{device}</h2>
-          {Object.keys(callQualityData[device]).map((date) => (
+          {Object.keys(typedData[device]).map((date) => (
             <div key={date} className="date-section">
               <h3>Date: {date}</h3>
-              {Object.keys(callQualityData[device][date]).map((time) => {
-                const call = callQualityData[device][date][time];
+              {Object.keys(typedData[device][date]).map((time) => {
+                const call = typedData[device][date][time];
                 return (
                   <div key={time} className="call-entry">
                     <h4>Time: {time}</h4>

@@ -4,8 +4,18 @@ import { db } from "../../firebase";  // Import the initialized db
 import "./topBox.scss";
 import { Link } from "react-router-dom";
 
+interface CallDetails {
+  callDate: string;
+  callTime: string;
+  contactName: string;
+  phNumber: string;
+  callType: string;
+  callDuration: string;
+  callDateTime?: Date;
+}
+
 const TopBox = () => {
-  const [callHistory, setCallHistory] = useState<any>([]);  // Initialize call history state as an array
+  const [callHistory, setCallHistory] = useState<CallDetails[]>([]);
 
   useEffect(() => {
     // Create a reference to the call history for "TECNO LH8n" in the database
@@ -15,11 +25,11 @@ const TopBox = () => {
     onValue(callLogRef, (snapshot) => {
       const data = snapshot.val();  // Get data from the snapshot
       if (data) {
-        const sortedData = [];
+        const sortedData: CallDetails[] = [];
 
         // Flattening and collecting call details with date and time for sorting
-        Object.entries(data).forEach(([date, calls]: any) => {
-          Object.entries(calls).forEach(([time, callDetails]: any) => {
+        Object.entries(data).forEach(([_, calls]) => {
+          Object.entries(calls as Record<string, CallDetails>).forEach(([_, callDetails]) => {
             sortedData.push({
               ...callDetails,
               callDateTime: new Date(`${callDetails.callDate} ${callDetails.callTime}`), // Combine date and time
@@ -28,7 +38,9 @@ const TopBox = () => {
         });
 
         // Sort the records by callDateTime in descending order
-        sortedData.sort((a, b) => b.callDateTime - a.callDateTime);
+        sortedData.sort((a, b) => 
+          (b.callDateTime?.getTime() || 0) - (a.callDateTime?.getTime() || 0)
+        );
 
         // Limit to 5 latest records
         setCallHistory(sortedData.slice(0, 5));
@@ -44,7 +56,7 @@ const TopBox = () => {
     <div className="topBox">
       <h1>Call History</h1>
       <div className="list">
-        {callHistory.map((callDetails: any, index: number) => (
+        {callHistory.map((callDetails, index) => (
           <div className="listItem" key={index}>
             <div className="user">
               <img src="default_image_path_or_call_icon.png" alt="" />

@@ -1,7 +1,8 @@
 // ReportDisplay.tsx
 import React, { useEffect, useState } from 'react';
-import { getReports, Incident, saveReport } from '../../report';
+import { getReports, Incident } from '../incident';
 import './ReportDisplay.scss';
+
 const ReportDisplay: React.FC<{ onEdit: (incident: Incident) => void }> = ({ onEdit }) => {
   const [reports, setReports] = useState<Incident[]>([]);
 

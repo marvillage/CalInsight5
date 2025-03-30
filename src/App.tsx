@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Home from "./pages/home/Home";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import Users from "./pages/users/Users";
@@ -14,13 +14,14 @@ import {
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import { Incident } from "./incident";
 
 // Importing the newly created components
 import TopBox from "./components/topBox/TopBox";
-import CallHistoryDetails from "./components/topBox/CallHistoryDetails";
-import MissedCalls from "./components/ChartBox/MissedCalls"; // Adjust the path as necessary
-import OutgoingCalls from "./components/ChartBox/OutgoingCalls";
-import CallLog from "./components/ChartBox/CallLog";
+import CallHistoryDetails from "./components/topBox/callHistoryDetails";
+import MissedCalls from "./components/chartBox/MissedCalls";
+import OutgoingCalls from "./components/chartBox/OutgoingCalls";
+import CallLog from "./components/chartBox/CallLog";
 import Contacts from "./components/Contacts";
 import FrequentCallDetector from "./components/FrequentCallDetector";
 import CallTypeAnalysis from "./components/CallTypeAnalysis";
@@ -42,25 +43,29 @@ import CallBack from "./components/CallConversionReport.tsx";
 import CallSrc from "./components/CallSrc.tsx";
 import Sentigen from "./components/sentigen.tsx";
 import ChatBot from "./components/chatgen.tsx";
-import Menu2 from "./components/menu/Menu2";
 import Chat from "./components/chat.tsx";
 
 const queryClient = new QueryClient();
 
 function App() {
-  const [userType, setUserType] = useState<string | null>(null); // State to hold the user type
+  const [userType, setUserType] = useState<string | null>(null);
+
+  const handleIncidentEdit = (incident: Incident) => {
+    // Handle incident edit here
+    console.log('Incident edited:', incident);
+  };
 
   const Layout = () => {
     return (
       <div className="main">
-        <Navbar userType={userType} /> {/* Pass userType to Navbar */}
+        <Navbar />
         <div className="container">
           <div className="menuContainer">
             <Menu />
           </div>
           <div className="contentContainer">
             <QueryClientProvider client={queryClient}>
-              <Outlet context={{ setUserType }} /> {/* Pass setUserType to Outlet */}
+              <Outlet context={{ setUserType }} />
             </QueryClientProvider>
           </div>
         </div>
@@ -156,7 +161,7 @@ function App() {
         },
         {
           path: "/incident-reporting",
-          element: <IncidentReport />,
+          element: <IncidentReport onEdit={handleIncidentEdit} />,
         },
         {
           path: "/view-query",
@@ -206,7 +211,7 @@ function App() {
     },
     {
       path: "/login",
-      element: <Login setUserType={setUserType} />, // Pass setUserType to Login
+      element: <Login setUserType={setUserType} />,
     },
   ]);
 

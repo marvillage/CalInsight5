@@ -1,8 +1,28 @@
 import React from 'react';
 import { complianceMetrics } from '../../compilance'; // Import the compliance metrics
 import './ComplianceReport.scss';
+
+interface CallData {
+  customerName: string;
+  duration: number;
+  wasPolite: boolean;
+  followedScript: boolean;
+  resolvedIssue: boolean;
+  customerSatisfaction: number;
+  complianceScore: number;
+}
+
+interface EmployeeData {
+  [key: string]: CallData | number;
+  overallComplianceScore: number;
+}
+
+interface ComplianceMetrics {
+  [employeeName: string]: EmployeeData;
+}
+
 const ComplianceReport: React.FC = () => {
-  const employeeData = complianceMetrics["Shahswat"]; // Get data for Shahswat
+  const employeeData = (complianceMetrics as ComplianceMetrics)["Shahswat"]; // Get data for Shahswat
 
   return (
     <div className="compliance-report">
@@ -14,7 +34,7 @@ const ComplianceReport: React.FC = () => {
             <p>Overall Compliance Score: {employeeData.overallComplianceScore}</p>
             <ul className="call-list">
               {Object.keys(employeeData).filter(key => key !== 'overallComplianceScore').map((callKey, index) => {
-                const call = employeeData[callKey];
+                const call = employeeData[callKey] as CallData;
                 return (
                   <li key={index} className="call-item">
                     <h3>Call {index + 1}: {call.customerName}</h3>

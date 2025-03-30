@@ -54,6 +54,12 @@ const DataTable = (props: Props) => {
 
   return (
     <div className="dataTable">
+      <div className="dataTableTitle">
+        Add New Product
+        <Link to="/products/new" className="link">
+          Add New
+        </Link>
+      </div>
       <DataGrid
         className="dataGrid"
         rows={props.rows}

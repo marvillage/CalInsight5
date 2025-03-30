@@ -1,9 +1,13 @@
 // IncidentReport.tsx
 import './IncidentReport.scss';
 import React, { useState } from 'react';
-import { saveReport, Incident } from '../../report';
+import { saveReport, Incident } from '../incident';
 
-const IncidentReport: React.FC = () => {
+interface IncidentReportProps {
+  onEdit: (incident: Incident) => void;
+}
+
+const IncidentReport: React.FC<IncidentReportProps> = ({ onEdit }) => {
   const [incident, setIncident] = useState<Incident>({
     customerName: '',
     uniqueId: '',
@@ -23,7 +27,8 @@ const IncidentReport: React.FC = () => {
   };
 
   const generateReport = () => {
-    saveReport(incident); // Save report to local storage (mock service)
+    saveReport(incident);
+    onEdit(incident);
     alert('Report has been generated and saved!');
   };
 
