@@ -32,8 +32,8 @@ import CallRisk from "./components/CallRiskAnalysis.tsx";
 import CallSentiment from "./components/CallSentiment.tsx";
 import CallTranscript from "./components/CallTranscript.tsx";
 import CallerBehavior from "./components/CallerBehaviourReport.tsx";
-import IncidentReport from "./components/IncidentReport.tsx";
-import ViewQuery from "./components/ReportDisplay.tsx";
+
+
 import CompilanceReport from "./components/ComplianceReport.tsx";
 import CallTagReport from "./components/CallTagReport.tsx";
 import CustomerFeedback from "./components/CustomerFeedback.tsx";
@@ -156,14 +156,8 @@ function App() {
           path: "/caller-behavior",
           element: <CallerBehavior />,
         },
-        {
-          path: "/incident-reporting",
-          element: <IncidentReport onEdit={handleIncidentEdit} />,
-        },
-        {
-          path: "/view-query",
-          element: <ViewQuery onEdit={handleIncidentEdit} />,
-        },
+       
+      
         {
           path: "/compilance-detector",
           element: <CompilanceReport />,
