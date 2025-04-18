@@ -32,8 +32,9 @@ import CallRisk from "./components/CallRiskAnalysis.tsx";
 import CallSentiment from "./components/CallSentiment.tsx";
 import CallTranscript from "./components/CallTranscript.tsx";
 import CallerBehavior from "./components/CallerBehaviourReport.tsx";
-
-
+import IncidentReport from "./components/IncidentReport";
+import { Incident } from './incident';
+import ViewQuery from "./components/ReportDisplay.tsx";
 import CompilanceReport from "./components/ComplianceReport.tsx";
 import CallTagReport from "./components/CallTagReport.tsx";
 import CustomerFeedback from "./components/CustomerFeedback.tsx";
@@ -46,6 +47,24 @@ import ChatBot from "./components/chatgen.tsx";
 import Chat from "./components/chat.tsx";
 
 const queryClient = new QueryClient();
+
+const IncidentReportWrapper = () => {
+  const handleEdit = (incident: Incident) => {
+    // Handle the edit functionality here
+    console.log('Editing incident:', incident);
+  };
+
+  return <IncidentReport onEdit={handleEdit} />;
+};
+
+const ViewQueryWrapper = () => {
+  const handleEdit = (incident: Incident) => {
+    // Handle the edit functionality here
+    console.log('Editing incident:', incident);
+  };
+
+  return <ViewQuery onEdit={handleEdit} />;
+};
 
 function App() {
   const [ setUserType] = useState<string | null>(null);
@@ -156,8 +175,14 @@ function App() {
           path: "/caller-behavior",
           element: <CallerBehavior />,
         },
-       
-      
+        {
+          path: "/incident-reporting",
+          element: <IncidentReportWrapper />,
+        },
+        {
+          path: "/view-query",
+          element: <ViewQueryWrapper />,
+        },
         {
           path: "/compilance-detector",
           element: <CompilanceReport />,
